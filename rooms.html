@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Номера - Гостиница "Ваше Море"</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="images/logo.png" alt="Логотип Гостиницы Ваше Море" class="logo">
+            <h1>Гостиница "Ваше Море"</h1>
+            <button class="menu-toggle" aria-label="Открыть меню">
+                <span class="menu-icon"></span>
+            </button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О гостинице</a></li>
+                    <li><a href="rooms.html">Номера</a></li>
+                    <li><a href="services.html">Сервисы</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="rooms">
+            <div class="container">
+                <h2>Наши номера</h2>
+                <div class="room-slider">
+                    <div class="slides">
+                        <div class="slide">
+                            <img src="images/room-standard.jpg" alt="Стандартный номер">
+                            <div class="slide-caption">
+                                <h3>Стандартный номер</h3>
+                                <p>Уютный номер с видом на море.</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="images/room-luxury.jpg" alt="Люкс">
+                            <div class="slide-caption">
+                                <h3>Люкс</h3>
+                                <p>Просторный номер с роскошными удобствами.</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="images/room-diamond.jpg" alt="Алмаз">
+                            <div class="slide-caption">
+                                <h3>Алмаз</h3>
+                                <p>Наш самый лучший номер</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Логотип Гостиницы Морская Река">
+            </div>
+            <div class="footer-text">
+                <p>Адрес: Ул. Примерная, 123, Город, Крым</p>
+                <p>Телефон: +7 (999) 999-9999</p>
+                <p>&copy; 2024 Гостиница "Ваше Море". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelector('.slides');
+            const slideCount = document.querySelectorAll('.slide').length;
+            let index = 0;
+            const nextButton = document.querySelector('.next');
+            const prevButton = document.querySelector('.prev');
+    
+            function showSlide(n) {
+                if (n >= slideCount) {
+                    index = 0;
+                } else if (n < 0) {
+                    index = slideCount - 1;
+                } else {
+                    index = n;
+                }
+                slides.style.transform = `translateX(-${index * 100}%)`;
+            }
+    
+            function nextSlide() {
+                showSlide(index + 1);
+            }
+    
+            function prevSlide() {
+                showSlide(index - 1);
+            }
+    
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+    
+            setInterval(nextSlide, 5000); // Смена слайдов каждые 5 секунд
+    
+            showSlide(index);
+        });
+    </script>
+</body>
+    <script src="scripts.js"></script>
+</html>
